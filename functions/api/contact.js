@@ -2,19 +2,18 @@
  * Cloudflare Pages Function — Contact form handler
  * POST /api/contact
  *
- * Setup:
- *   1. Create account at resend.com (free tier: 100 emails/day)
- *   2. Verify a sending domain (or use onboarding@resend.dev for testing)
- *   3. Set env variable in Cloudflare Pages dashboard:
- *      RESEND_API_KEY = re_xxxxxxxxxxxx
- *   4. Update FROM_ADDRESS below to your verified sender
+ * セットアップ手順:
+ *   1. https://web3forms.com にアクセス
+ *   2. taichi.o@oneddy.net を入力して "Create Access Key" をクリック
+ *   3. メールで届いたアクセスキーをコピー
+ *   4. Cloudflare Pages ダッシュボード
+ *      → Settings → Environment variables → Add variable
+ *      Name:  WEB3FORMS_KEY
+ *      Value: （コピーしたキー）
+ *   5. Deployments → Retry deployment
  */
 
-const TO_ADDRESS   = 'taichi.o@oneddy.net';
-const FROM_ADDRESS = 'portfolio@taichiokada.com'; // ← update to your verified sender domain
-const FROM_NAME    = 'Taichi Okada Portfolio';
-
-const CORS_HEADERS = {
+const CORS = {
   'Access-Control-Allow-Origin':  '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
@@ -23,105 +22,103 @@ const CORS_HEADERS = {
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    headers: { ...CORS, 'Content-Type': 'application/json' },
   });
 }
 
 export async function onRequestPost({ request, env }) {
   try {
-    // --- Parse body (form or JSON) ---
+    // ── Parse body ──────────────────────────────────────────
     const ct = request.headers.get('Content-Type') || '';
     let data = {};
 
     if (ct.includes('application/json')) {
       data = await request.json();
-    } else if (ct.includes('multipart/form-data') || ct.includes('application/x-www-form-urlencoded')) {
-      const fd = await request.formData();
-      for (const [k, v] of fd.entries()) data[k] = v;
     } else {
-      return json({ error: 'Unsupported content type' }, 400);
+      // multipart/form-data or application/x-www-form-urlencoded
+      const fd = await request.formData();
+      for (const [k, v] of fd.entries()) data[k] = String(v);
     }
 
-    // --- Honeypot (spam) ---
+    // ── Honeypot (spam) ──────────────────────────────────────
     if (data._gotcha) return json({ ok: true }); // silently discard
 
-    // --- Validate required fields ---
-    const required = { name: 'お名前', email: 'メールアドレス', inquiry_type: '相談の種類', message: '内容' };
-    for (const [field, label] of Object.entries(required)) {
-      if (!data[field]?.toString().trim()) {
+    // ── Validate ─────────────────────────────────────────────
+    const fields = {
+      name:         'お名前',
+      email:        'メールアドレス',
+      inquiry_type: '相談の種類',
+      message:      '内容',
+    };
+    for (const [key, label] of Object.entries(fields)) {
+      if (!data[key]?.trim()) {
         return json({ error: `${label}を入力してください` }, 400);
       }
     }
 
-    // --- Email format ---
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
       return json({ error: '有効なメールアドレスを入力してください' }, 400);
     }
 
-    // --- Rate-limit hint (basic: check CF-Connecting-IP via header) ---
-    // Full rate limiting can be added via Cloudflare Workers KV if needed.
-
-    // --- Send via Resend ---
-    const apiKey = env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error('RESEND_API_KEY is not set');
-      return json({ error: 'Server configuration error' }, 500);
+    // ── API key ───────────────────────────────────────────────
+    const accessKey = env.WEB3FORMS_KEY;
+    if (!accessKey) {
+      console.error('[contact] WEB3FORMS_KEY is not set in environment variables');
+      return json({ error: 'サーバー設定エラーです。管理者にご連絡ください。' }, 500);
     }
 
+    // ── Build message ─────────────────────────────────────────
     const inquiryLabels = {
       workflow: '業務設計・業務フロー整理',
       ai:       'AI活用・業務への組み込み',
       tool:     '業務ツール設計・開発',
       web:      'LP / Web制作',
-      other:    'その他',
+      other:    'その他・まだ決まっていない',
     };
     const inquiryLabel = inquiryLabels[data.inquiry_type] || data.inquiry_type;
 
-    const emailBody = [
-      `【ポートフォリオサイトからの問い合わせ】`,
-      ``,
+    const message = [
       `お名前:       ${data.name}`,
       `会社・組織名: ${data.company || '（未入力）'}`,
       `メール:       ${data.email}`,
       `相談の種類:   ${inquiryLabel}`,
-      ``,
-      `内容:`,
+      '',
+      '内容:',
       data.message,
-      ``,
-      `---`,
-      `送信元: taichiokada.com お問い合わせフォーム`,
+      '',
+      '---',
+      '送信元: taichiokada.com お問い合わせフォーム',
     ].join('\n');
 
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type':  'application/json',
-      },
+    // ── Send via Web3Forms ────────────────────────────────────
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
-        from:     `${FROM_NAME} <${FROM_ADDRESS}>`,
-        to:       [TO_ADDRESS],
-        reply_to: data.email,
-        subject:  `[お問い合わせ] ${inquiryLabel} — ${data.name}`,
-        text:     emailBody,
+        access_key: accessKey,
+        subject:    `[お問い合わせ] ${inquiryLabel} — ${data.name}`,
+        from_name:  data.name,
+        replyto:    data.email,
+        message,
       }),
     });
 
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error('Resend API error:', res.status, errText);
-      return json({ error: 'メール送信に失敗しました。時間をおいて再度お試しください。' }, 500);
+    const result = await res.json().catch(() => ({}));
+
+    if (!result.success) {
+      console.error('[contact] Web3Forms error:', res.status, JSON.stringify(result));
+      return json({ error: '送信に失敗しました。時間をおいて再度お試しください。' }, 502);
     }
 
     return json({ ok: true });
 
   } catch (err) {
-    console.error('Contact handler error:', err);
+    console.error('[contact] Unhandled error:', err);
     return json({ error: 'サーバーエラーが発生しました。' }, 500);
   }
 }
 
-// Handle OPTIONS preflight
+// OPTIONS preflight (CORS)
 export async function onRequestOptions() {
-  return new Response(null, { headers: CORS_HEADERS });
+  return new Response(null, { status: 204, headers: CORS });
 }
