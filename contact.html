@@ -68,10 +68,11 @@
           <div class="contact-hints reveal-item">
             <p class="hints-label mono" data-ja="こんな相談が多いです" data-en="Common starting points">こんな相談が多いです</p>
             <ul>
-              <li data-ja="手作業が多く、どこから整理すればいいかわからない" data-en="Too much manual work, unsure where to start">手作業が多く、どこから整理すればいいかわからない</li>
-              <li data-ja="AI を使いたいが、現場への落とし込み方がわからない" data-en="Want to use AI, but not sure how it fits">AI を使いたいが、現場への落とし込み方がわからない</li>
-              <li data-ja="LP やサイトを作りたいが、何から決めればいいかわからない" data-en="Need a site or LP but not sure where to start">LP やサイトを作りたいが、何から決めればいいかわからない</li>
-              <li data-ja="担当者が変わると業務が止まってしまう" data-en="Operations fall apart when someone leaves">担当者が変わると業務が止まってしまう</li>
+              <li data-ja="業務の手作業が多く、どこから整理すればいいかわからない" data-en="Too much manual work, unsure where to start">業務の手作業が多く、どこから整理すればいいかわからない</li>
+              <li data-ja="AIを使いたいが、現場にどう落とし込むかわからない" data-en="Want to use AI, but not sure how it fits the actual workflow">AIを使いたいが、現場にどう落とし込むかわからない</li>
+              <li data-ja="業務が属人化していて、担当者が変わると止まってしまう" data-en="Operations depend on one person and break down when they leave">業務が属人化していて、担当者が変わると止まってしまう</li>
+              <li data-ja="社内DXを進めたいが、何から着手すればいいかわからない" data-en="Want to move on internal DX but don't know where to begin">社内DXを進めたいが、何から着手すればいいかわからない</li>
+              <li data-ja="LPやWebサイトを作りたいが、構成・内容から一緒に考えてほしい" data-en="Need a site or LP and want help from the structure stage">LPやWebサイトを作りたいが、構成・内容から一緒に考えてほしい</li>
             </ul>
           </div>
 
@@ -83,7 +84,7 @@
               - Custom API: your POST endpoint
             action="#" = preview/simulation mode (shows success after 1s)
           -->
-          <form class="contact-form reveal-item" id="contactForm" action="#" method="POST" novalidate>
+          <form class="contact-form reveal-item" id="contactForm" action="/api/contact" method="POST" novalidate>
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="field-row">
@@ -111,12 +112,12 @@
               <label for="f-type" data-ja="相談の種類" data-en="Inquiry type">相談の種類</label>
               <div class="select-wrap">
                 <select id="f-type" name="inquiry_type" required aria-describedby="err-type">
-                  <option value=""      data-ja="選択してください"    data-en="Select...">選択してください</option>
-                  <option value="web"   data-ja="LP / Web制作"       data-en="LP / Web Development">LP / Web制作</option>
-                  <option value="ai"    data-ja="AI活用・カリキュラム設計" data-en="AI / Curriculum Design">AI活用・カリキュラム設計</option>
-                  <option value="tool"  data-ja="業務ツール開発"       data-en="Internal Tool Development">業務ツール開発</option>
-                  <option value="dx"    data-ja="社内DX / 業務効率化" data-en="Internal DX / Workflow">社内DX / 業務効率化</option>
-                  <option value="other" data-ja="その他"              data-en="Other">その他</option>
+                  <option value=""      data-ja="選択してください"       data-en="Select...">選択してください</option>
+                  <option value="workflow" data-ja="業務設計・業務フロー整理" data-en="Workflow Design / Process Improvement">業務設計・業務フロー整理</option>
+                  <option value="ai"    data-ja="AI活用・業務への組み込み"  data-en="AI Integration / Adoption Support">AI活用・業務への組み込み</option>
+                  <option value="tool"  data-ja="業務ツール設計・開発"      data-en="Internal Tool Development">業務ツール設計・開発</option>
+                  <option value="web"   data-ja="LP / Web制作"             data-en="LP / Web Development">LP / Web制作</option>
+                  <option value="other" data-ja="その他・まだ決まっていない" data-en="Other / Not sure yet">その他・まだ決まっていない</option>
                 </select>
                 <span class="sel-arrow" aria-hidden="true">↓</span>
               </div>
