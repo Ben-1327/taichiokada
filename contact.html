@@ -84,8 +84,11 @@
               - Custom API: your POST endpoint
             action="#" = preview/simulation mode (shows success after 1s)
           -->
-          <form class="contact-form reveal-item" id="contactForm" action="/api/contact" method="POST" novalidate>
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <form class="contact-form reveal-item" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="ca183831-8b78-4370-afd7-85769f357254">
+            <input type="hidden" name="subject" value="[ポートフォリオ] お問い合わせ">
+            <input type="hidden" name="from_name" value="Taichi Okada Portfolio">
+            <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="field-row">
               <div class="field">

@@ -316,8 +316,9 @@
           body: new FormData(form),
           headers: { Accept: 'application/json' }
         });
-        if (res.ok) { form.reset(); showStatus('ok'); }
-        else throw new Error(res.status);
+        const result = await res.json().catch(() => ({}));
+        if (res.ok && result.success) { form.reset(); showStatus('ok'); }
+        else throw new Error(result.message || res.status);
       } catch (err) {
         console.error('Form error:', err);
         showStatus('err');
