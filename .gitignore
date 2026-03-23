@@ -1,0 +1,17 @@
+# Claude / Playwright
+.claude/
+.playwright-mcp/
+
+# 元データPDF（クライアント資料）
+*.pdf
+
+# 仕様書（内部ドキュメント）
+portfolio_site_spec_taichi_okada.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp

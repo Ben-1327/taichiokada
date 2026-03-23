@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Taichi Okada へのご相談・お問い合わせ。課題がまだ言語化できていなくても大丈夫です。">
+  <title>Contact | Taichi Okada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======================================================
+       HEADER
+  ====================================================== -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Taichi Okada — トップ">
+        <span class="brand-name">Taichi Okada</span>
+        <span class="brand-sub mono">AI / DX / Workflow Design</span>
+      </a>
+      <nav class="nav-primary" aria-label="Primary">
+        <a href="index.html" data-ja="Home" data-en="Home">Home</a>
+        <a href="works.html" data-ja="実績" data-en="Works">実績</a>
+        <a href="about.html" data-ja="About" data-en="About">About</a>
+        <a href="contact.html" class="nav-cta" data-ja="相談する" data-en="Contact" aria-current="page">相談する</a>
+      </nav>
+      <div class="header-aside">
+        <button class="lang-toggle" id="langToggle" aria-label="言語切替">
+          <span class="lang-opt" data-lang="ja">JA</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="メニュー">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="index.html" class="m-link" data-ja="Home" data-en="Home">Home</a>
+      <a href="works.html" class="m-link" data-ja="実績" data-en="Works">実績</a>
+      <a href="about.html" class="m-link" data-ja="About" data-en="About">About</a>
+      <a href="contact.html" class="m-link m-cta" data-ja="相談する" data-en="Contact">相談する</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================================================
+         CONTACT SECTION (full form)
+    ====================================================== -->
+    <section class="section contact-section contact-page" id="contact">
+      <div class="container">
+
+        <div class="contact-head">
+          <span class="eyebrow mono">04 — <span data-ja="Contact" data-en="Contact">Contact</span></span>
+          <h1 data-ja="まずは、話してみる。" data-en="Let's talk.">まずは、話してみる。</h1>
+          <p data-ja="課題がまだ言語化できていなくても大丈夫です。今の状況を簡単に教えてください。"
+             data-en="You don't need a clear brief. Just tell me what's been on your mind.">
+            課題がまだ言語化できていなくても大丈夫です。今の状況を簡単に教えてください。
+          </p>
+        </div>
+
+        <div class="contact-layout">
+
+          <div class="contact-hints reveal-item">
+            <p class="hints-label mono" data-ja="こんな相談が多いです" data-en="Common starting points">こんな相談が多いです</p>
+            <ul>
+              <li data-ja="手作業が多く、どこから整理すればいいかわからない" data-en="Too much manual work, unsure where to start">手作業が多く、どこから整理すればいいかわからない</li>
+              <li data-ja="AI を使いたいが、現場への落とし込み方がわからない" data-en="Want to use AI, but not sure how it fits">AI を使いたいが、現場への落とし込み方がわからない</li>
+              <li data-ja="LP やサイトを作りたいが、何から決めればいいかわからない" data-en="Need a site or LP but not sure where to start">LP やサイトを作りたいが、何から決めればいいかわからない</li>
+              <li data-ja="担当者が変わると業務が止まってしまう" data-en="Operations fall apart when someone leaves">担当者が変わると業務が止まってしまう</li>
+            </ul>
+          </div>
+
+          <!--
+            FORM ENDPOINT:
+            Replace action="#" with your endpoint:
+              - Formspree: action="https://formspree.io/f/YOUR_ID"
+              - Netlify: add data-netlify="true"
+              - Custom API: your POST endpoint
+            action="#" = preview/simulation mode (shows success after 1s)
+          -->
+          <form class="contact-form reveal-item" id="contactForm" action="#" method="POST" novalidate>
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-name" data-ja="お名前" data-en="Name">お名前</label>
+                <input type="text" id="f-name" name="name" required autocomplete="name" aria-describedby="err-name">
+                <span class="field-err" id="err-name" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-company">
+                  <span data-ja="会社・組織名" data-en="Company">会社・組織名</span>
+                  <span class="label-opt mono" data-ja="（任意）" data-en="(optional)">（任意）</span>
+                </label>
+                <input type="text" id="f-company" name="company" autocomplete="organization">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-email" data-ja="メールアドレス" data-en="Email">メールアドレス</label>
+              <input type="email" id="f-email" name="email" required autocomplete="email" aria-describedby="err-email">
+              <span class="field-err" id="err-email" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="f-type" data-ja="相談の種類" data-en="Inquiry type">相談の種類</label>
+              <div class="select-wrap">
+                <select id="f-type" name="inquiry_type" required aria-describedby="err-type">
+                  <option value=""      data-ja="選択してください"    data-en="Select...">選択してください</option>
+                  <option value="web"   data-ja="LP / Web制作"       data-en="LP / Web Development">LP / Web制作</option>
+                  <option value="ai"    data-ja="AI活用・カリキュラム設計" data-en="AI / Curriculum Design">AI活用・カリキュラム設計</option>
+                  <option value="tool"  data-ja="業務ツール開発"       data-en="Internal Tool Development">業務ツール開発</option>
+                  <option value="dx"    data-ja="社内DX / 業務効率化" data-en="Internal DX / Workflow">社内DX / 業務効率化</option>
+                  <option value="other" data-ja="その他"              data-en="Other">その他</option>
+                </select>
+                <span class="sel-arrow" aria-hidden="true">↓</span>
+              </div>
+              <span class="field-err" id="err-type" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="f-msg" data-ja="内容" data-en="Message">内容</label>
+              <textarea id="f-msg" name="message" required rows="5" aria-describedby="err-msg"></textarea>
+              <span class="field-err" id="err-msg" role="alert"></span>
+            </div>
+
+            <div class="form-footer">
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="btn-label" data-ja="送信する" data-en="Send">送信する</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+              <span class="form-note mono"
+                    data-ja="通常 2〜3 営業日以内に返信します"
+                    data-en="I typically respond within 2–3 business days">通常 2〜3 営業日以内に返信します</span>
+            </div>
+
+            <div class="form-status" id="formStatus" role="status" aria-live="polite" hidden>
+              <div class="status-ok" hidden>
+                <span data-ja="送信しました。ありがとうございます。近日中にご連絡します。"
+                      data-en="Sent — thank you. I'll be in touch soon.">送信しました。ありがとうございます。近日中にご連絡します。</span>
+              </div>
+              <div class="status-err" hidden>
+                <span data-ja="送信に失敗しました。時間をおいて再度お試しください。"
+                      data-en="Something went wrong. Please try again.">送信に失敗しました。時間をおいて再度お試しください。</span>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-name">Taichi Okada</span>
+          <span class="footer-sub mono"
+                data-ja="AI活用 / 業務設計 / Web制作"
+                data-en="AI / Workflow Design / Web">AI活用 / 業務設計 / Web制作</span>
+        </div>
+        <div class="footer-right">
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="works.html" data-ja="実績" data-en="Works">実績</a>
+            <a href="about.html" data-ja="About" data-en="About">About</a>
+            <a href="contact.html" data-ja="相談する" data-en="Contact">相談する</a>
+          </nav>
+          <span class="footer-copy mono">© 2025 Taichi Okada</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

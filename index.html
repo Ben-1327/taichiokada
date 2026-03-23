@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Taichi Okada — AI活用・社内DX・業務効率化を、現場理解から運用定着まで支援します。">
+  <title>Taichi Okada — 業務設計・AI活用・自動化</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======================================================
+       HEADER
+  ====================================================== -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html" aria-label="Taichi Okada — トップ">
+        <span class="brand-name">Taichi Okada</span>
+        <span class="brand-sub mono">AI / DX / Workflow Design</span>
+      </a>
+
+      <nav class="nav-primary" aria-label="Primary">
+        <a href="index.html" data-ja="Home" data-en="Home" aria-current="page">Home</a>
+        <a href="works.html" data-ja="実績" data-en="Works">実績</a>
+        <a href="about.html" data-ja="About" data-en="About">About</a>
+        <a href="contact.html" class="nav-cta" data-ja="相談する" data-en="Contact">相談する</a>
+      </nav>
+
+      <div class="header-aside">
+        <button class="lang-toggle" id="langToggle" aria-label="言語切替">
+          <span class="lang-opt" data-lang="ja">JA</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="メニュー">
+          <span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="index.html" class="m-link" data-ja="Home"   data-en="Home">Home</a>
+      <a href="works.html" class="m-link" data-ja="実績"   data-en="Works">実績</a>
+      <a href="about.html" class="m-link" data-ja="About"  data-en="About">About</a>
+      <a href="contact.html" class="m-link m-cta" data-ja="相談する" data-en="Contact">相談する</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================================================
+         HERO
+    ====================================================== -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+
+        <!-- Copy — left -->
+        <div class="hero-copy">
+          <p class="hero-kicker mono">
+            <span data-ja="AI活用 · 業務設計 · 自動化" data-en="AI · Workflow Design · Automation">AI活用 · 業務設計 · 自動化</span>
+          </p>
+
+          <h1 class="hero-headline">
+            <span class="hl" data-ja="現場の混乱を、" data-en="From messy operations">現場の混乱を、</span>
+            <span class="hl" data-ja="回る仕組みに変える。" data-en="to systems that run.">回る仕組みに変える。</span>
+          </h1>
+
+          <p class="hero-sub"
+             data-ja="AI活用・社内DX・業務効率化を、現場理解から要件整理、軽量なツール設計、運用定着まで支援します。いきなりツールは作りません。まず現状を聞き、何が本当の課題かを整理してから動きます。"
+             data-en="Supporting AI adoption, internal DX, and workflow improvement—from field understanding to tool design and operational adoption. We don't start by building. We start by listening.">
+            AI活用・社内DX・業務効率化を、現場理解から要件整理、軽量なツール設計、運用定着まで支援します。いきなりツールは作りません。まず現状を聞き、何が本当の課題かを整理してから動きます。
+          </p>
+
+          <div class="hero-tags" aria-label="対応領域">
+            <span data-ja="AI業務設計"   data-en="AI Workflow Design">AI業務設計</span>
+            <span data-ja="業務ツール開発" data-en="Internal Tools">業務ツール開発</span>
+            <span data-ja="Web / LP制作"  data-en="Web / LP">Web / LP制作</span>
+            <span>GAS · Spreadsheet · API</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="works.html" class="hero-link" data-ja="実績を見る" data-en="See work">実績を見る <span aria-hidden="true">→</span></a>
+            <a href="contact.html" class="hero-link hero-link-primary" data-ja="相談する" data-en="Get in touch">相談する <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- Visual — right -->
+        <div class="hero-visual" role="presentation" aria-hidden="true">
+          <p class="visual-label mono" aria-hidden="true">Tokyo, Japan</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         SERVICES
+    ====================================================== -->
+    <section class="section services-section" id="services">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow mono">01 — <span data-ja="Services" data-en="Services">Services</span></span>
+          <h2 data-ja="サービス" data-en="Services">サービス</h2>
+          <p class="section-intro"
+             data-ja="「何を作るか」より先に、「何が問題か」を整理します。"
+             data-en="Before deciding what to build, I work to understand what's actually broken.">
+            「何を作るか」より先に、「何が問題か」を整理します。
+          </p>
+        </div>
+
+        <ul class="services-list" role="list">
+
+          <li class="service-row reveal-item">
+            <span class="svc-num mono" aria-hidden="true">01</span>
+            <div class="svc-body">
+              <h3 data-ja="Web制作 / LP制作" data-en="Web & LP Development">Web制作 / LP制作</h3>
+              <p data-ja="ビジネス目標から逆算した構成設計・デザイン・実装。更新しやすい構造設計も含む。"
+                 data-en="Structure, design, and development built backward from business goals. Includes easy-to-maintain architecture.">
+                ビジネス目標から逆算した構成設計・デザイン・実装。更新しやすい構造設計も含む。
+              </p>
+            </div>
+            <div class="svc-tags">
+              <span>LP制作</span><span>Webサイト</span><span>CMS</span>
+            </div>
+          </li>
+
+          <li class="service-row reveal-item">
+            <span class="svc-num mono" aria-hidden="true">02</span>
+            <div class="svc-body">
+              <h3 data-ja="AI活用・業務整理" data-en="AI Integration & Workflow Design">AI活用・業務整理</h3>
+              <p data-ja="どこにAIを入れるか、何を人が判断するかを整理し、現場に合う形で組み込む。カリキュラム設計・コンテンツ制作も含む。"
+                 data-en="Mapping where AI fits and where human judgment stays. Includes curriculum design and content creation.">
+                どこにAIを入れるか、何を人が判断するかを整理し、現場に合う形で組み込む。カリキュラム設計・コンテンツ制作も含む。
+              </p>
+            </div>
+            <div class="svc-tags">
+              <span>AI設計</span><span>カリキュラム</span><span>業務整理</span>
+            </div>
+          </li>
+
+          <li class="service-row reveal-item">
+            <span class="svc-num mono" aria-hidden="true">03</span>
+            <div class="svc-body">
+              <h3 data-ja="業務ツール設計・開発" data-en="Internal Tool Design & Development">業務ツール設計・開発</h3>
+              <p data-ja="大きなシステムを入れる前に、今ある環境で実務を改善する。GAS / Spreadsheet / Slack / API を使った軽量なツールを設計・実装する。"
+                 data-en="Improving operations within existing infrastructure. Lightweight tools built with GAS, Spreadsheet, Slack, and APIs.">
+                大きなシステムを入れる前に、今ある環境で実務を改善する。GAS / Spreadsheet / Slack / API を使った軽量なツールを設計・実装する。
+              </p>
+            </div>
+            <div class="svc-tags">
+              <span>GAS</span><span>Spreadsheet</span><span>API</span>
+            </div>
+          </li>
+
+          <li class="service-row reveal-item">
+            <span class="svc-num mono" aria-hidden="true">04</span>
+            <div class="svc-body">
+              <h3 data-ja="業務フロー設計・運用定着" data-en="Workflow Design & Adoption">業務フロー設計・運用定着</h3>
+              <p data-ja="属人化を解消し、チームで回せる運用に整える。引き継ぎ・マニュアル・運用ルールの整備まで含む。"
+                 data-en="Reducing single-person dependencies. Includes handoff documentation and operating rules to ensure real adoption.">
+                属人化を解消し、チームで回せる運用に整える。引き継ぎ・マニュアル・運用ルールの整備まで含む。
+              </p>
+            </div>
+            <div class="svc-tags">
+              <span>運用設計</span><span>ドキュメント</span><span>定着支援</span>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         WORK (simplified — links to works.html)
+    ====================================================== -->
+    <section class="section work-section" id="work">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow mono">02 — <span data-ja="Selected Work" data-en="Selected Work">Selected Work</span></span>
+          <h2 data-ja="実績" data-en="Work">実績</h2>
+          <p class="section-intro"
+             data-ja="守秘義務の範囲内で、実際の案件の概要を掲載しています。"
+             data-en="Selected projects shared within appropriate confidentiality.">
+            守秘義務の範囲内で、実際の案件の概要を掲載しています。
+          </p>
+        </div>
+
+        <div class="work-index-list">
+
+          <a href="works.html#work-01" class="work-index-item reveal-item">
+            <span class="wi-num mono" aria-hidden="true">01</span>
+            <div class="wi-body">
+              <span class="case-tag" data-ja="WEB制作" data-en="Web Development">WEB制作</span>
+              <h3 data-ja="LP・Webサイトの設計と制作" data-en="LP & Website Design and Development">LP・Webサイトの設計と制作</h3>
+              <p data-ja="目的・ターゲット・訴求内容の整理から、構成設計・デザイン・実装まで一貫して対応。" data-en="From goal clarification through structure, design, and development.">目的・ターゲット・訴求内容の整理から、構成設計・デザイン・実装まで一貫して対応。</p>
+            </div>
+            <span class="wi-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="works.html#work-02" class="work-index-item reveal-item">
+            <span class="wi-num mono" aria-hidden="true">02</span>
+            <div class="wi-body">
+              <span class="case-tag" data-ja="AI活用 / 教育事業" data-en="AI / Education">AI活用 / 教育事業</span>
+              <h3 data-ja="オンラインスクール向け AIカリキュラムの企画・設計・制作" data-en="AI Curriculum Strategy, Design & Production">オンラインスクール向け AIカリキュラムの企画・設計・制作</h3>
+              <p data-ja="企画・戦略設計からカリキュラム構造設計、各ユニットの教材制作まで一貫して担当。" data-en="Full scope from strategy through curriculum architecture and content production.">企画・戦略設計からカリキュラム構造設計、各ユニットの教材制作まで一貫して担当。</p>
+            </div>
+            <span class="wi-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="works.html#work-03" class="work-index-item reveal-item">
+            <span class="wi-num mono" aria-hidden="true">03</span>
+            <div class="wi-body">
+              <span class="case-tag" data-ja="業務ツール開発" data-en="Internal Tool Development">業務ツール開発</span>
+              <h3 data-ja="ドライバー管理〜請求処理の業務ツール設計・開発" data-en="Driver Management & Billing Workflow Tool">ドライバー管理〜請求処理の業務ツール設計・開発</h3>
+              <p data-ja="分断されていた管理・アサイン・請求処理をGAS + Spreadsheetで一つの流れに統合。" data-en="Unified fragmented management, assignment, and billing into one GAS + Spreadsheet flow.">分断されていた管理・アサイン・請求処理をGAS + Spreadsheetで一つの流れに統合。</p>
+            </div>
+            <span class="wi-arrow" aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+        <div class="work-index-footer reveal-item">
+          <a href="works.html" class="section-link">
+            <span data-ja="実績をすべて見る" data-en="View all work">実績をすべて見る</span>
+            <span aria-hidden="true"> →</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         PROCESS / 依頼の流れ
+    ====================================================== -->
+    <section class="section process-section" id="process">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow mono">03 — <span data-ja="How it works" data-en="How it works">How it works</span></span>
+          <h2 data-ja="依頼の流れ" data-en="How it works">依頼の流れ</h2>
+        </div>
+
+        <!-- Key statement -->
+        <div class="process-statement reveal-item">
+          <p class="statement-main"
+             data-ja="いきなりツールは作りません。"
+             data-en="We don't start by building.">
+            いきなりツールは作りません。
+          </p>
+          <p class="statement-sub"
+             data-ja="まず現状を聞き、何が本当の課題かを整理してから、提案と実装に入ります。"
+             data-en="First we listen, define what's actually broken, then propose and build.">
+            まず現状を聞き、何が本当の課題かを整理してから、提案と実装に入ります。
+          </p>
+        </div>
+
+        <!-- Steps -->
+        <div class="process-flow">
+
+          <div class="process-step reveal-item">
+            <span class="step-num mono" aria-hidden="true">01</span>
+            <div class="step-body">
+              <h3 data-ja="お問い合わせ" data-en="Reach out">お問い合わせ</h3>
+              <p data-ja="現状や気になることを簡単に教えてください。まだ整理できていなくても大丈夫です。"
+                 data-en="Share what's on your mind. No need for a polished brief.">
+                現状や気になることを簡単に教えてください。まだ整理できていなくても大丈夫です。
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="process-step reveal-item">
+            <span class="step-num mono" aria-hidden="true">02</span>
+            <div class="step-body">
+              <h3 data-ja="ヒアリング" data-en="Discovery">ヒアリング</h3>
+              <p data-ja="現在の業務フロー・ツール・課題の背景を一緒に確認します。30〜60分程度。"
+                 data-en="We go through your current workflow, tools, and pain points together. About 30–60 minutes.">
+                現在の業務フロー・ツール・課題の背景を一緒に確認します。30〜60分程度。
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="process-step reveal-item">
+            <span class="step-num mono" aria-hidden="true">03</span>
+            <div class="step-body">
+              <h3 data-ja="現状整理・課題定義" data-en="Problem definition">現状整理・課題定義</h3>
+              <p data-ja="何が本当の問題かを明確にします。この段階でやることとやらないことを整理します。"
+                 data-en="We clarify what's actually broken. Define scope—what to address and what to leave.">
+                何が本当の問題かを明確にします。この段階でやることとやらないことを整理します。
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="process-step reveal-item">
+            <span class="step-num mono" aria-hidden="true">04</span>
+            <div class="step-body">
+              <h3 data-ja="提案" data-en="Proposal">提案</h3>
+              <p data-ja="必要な仕組み・設計・実装方針を提示します。合意してから動きます。"
+                 data-en="We present the approach, structure, and implementation plan. Alignment before execution.">
+                必要な仕組み・設計・実装方針を提示します。合意してから動きます。
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="process-step reveal-item">
+            <span class="step-num mono" aria-hidden="true">05</span>
+            <div class="step-body">
+              <h3 data-ja="実装・制作" data-en="Build">実装・制作</h3>
+              <p data-ja="合意した設計をもとに、現場で実際に使われる形で実装します。"
+                 data-en="Build based on the agreed design—shaped for how the team actually works.">
+                合意した設計をもとに、現場で実際に使われる形で実装します。
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="process-step reveal-item">
+            <span class="step-num mono" aria-hidden="true">06</span>
+            <div class="step-body">
+              <h3 data-ja="納品" data-en="Delivery">納品</h3>
+              <p data-ja="引き継ぎ・ドキュメント・運用ルールの整備まで含めて完了とします。"
+                 data-en="Includes handoff documentation and operating rules. Done when it's ready to run.">
+                引き継ぎ・ドキュメント・運用ルールの整備まで含めて完了とします。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         ABOUT (teaser — links to about.html)
+    ====================================================== -->
+    <section class="section about-section" id="about">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow mono">04 — About</span>
+          <h2>About</h2>
+        </div>
+
+        <div class="about-layout">
+
+          <div class="about-visual">
+            <img
+              src="assets/taichiokada.jpg"
+              alt="Taichi Okada"
+              class="portrait"
+              loading="lazy"
+              width="400"
+              height="500"
+            >
+            <div class="portrait-caption">
+              <span class="cap-name">Taichi Okada</span>
+              <span class="cap-role mono" data-ja="岡田 太一" data-en="岡田 太一">岡田 太一</span>
+            </div>
+          </div>
+
+          <div class="about-text reveal-item">
+            <p data-ja="カスタマーサクセス・オペレーション領域からキャリアをはじめ、現場の業務課題に向き合いながら、業務改善・自動化・ツール設計へと専門を広げてきました。"
+               data-en="I started in customer success and operations, and gradually moved toward systems design, automation, and internal tooling—always working close to real field problems.">
+              カスタマーサクセス・オペレーション領域からキャリアをはじめ、現場の業務課題に向き合いながら、業務改善・自動化・ツール設計へと専門を広げてきました。
+            </p>
+            <p data-ja="得意としているのは、非技術職のメンバーとも一緒に要件を整理し、「大きすぎず、実際に使われる」形で仕組みを作ることです。ツールを作って終わりではなく、実際に運用が回る状態まで関わることを重視しています。"
+               data-en="My strength is working alongside non-technical stakeholders to clarify what's really needed, then building systems that are small enough to actually get used—and staying involved until they do.">
+              得意としているのは、非技術職のメンバーとも一緒に要件を整理し、「大きすぎず、実際に使われる」形で仕組みを作ることです。ツールを作って終わりではなく、実際に運用が回る状態まで関わることを重視しています。
+            </p>
+
+            <div class="about-meta">
+              <div class="meta-item">
+                <span class="meta-key mono" data-ja="拠点" data-en="Based">拠点</span>
+                <span class="meta-val" data-ja="東京（リモート対応）" data-en="Tokyo — remote-friendly">東京（リモート対応）</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-key mono" data-ja="言語" data-en="Languages">言語</span>
+                <span class="meta-val" data-ja="日本語・英語" data-en="Japanese & English">日本語・英語</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-key mono" data-ja="形態" data-en="Availability">形態</span>
+                <span class="meta-val" data-ja="業務委託・プロジェクト型" data-en="Contract / project-based">業務委託・プロジェクト型</span>
+              </div>
+            </div>
+
+            <a href="about.html" class="section-link about-more-link reveal-item">
+              <span data-ja="詳細プロフィールを見る" data-en="Full profile">詳細プロフィールを見る</span>
+              <span aria-hidden="true"> →</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         CONTACT CTA (no form — links to contact.html)
+    ====================================================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+
+        <div class="contact-head">
+          <span class="eyebrow mono">05 — <span data-ja="Contact" data-en="Contact">Contact</span></span>
+          <h2 data-ja="まずは、話してみる。" data-en="Let's talk.">まずは、話してみる。</h2>
+          <p data-ja="課題がまだ言語化できていなくても大丈夫です。今の状況を簡単に教えてください。"
+             data-en="You don't need a clear brief. Just tell me what's been on your mind.">
+            課題がまだ言語化できていなくても大丈夫です。今の状況を簡単に教えてください。
+          </p>
+        </div>
+
+        <div class="contact-cta-block reveal-item">
+          <ul class="contact-reasons">
+            <li data-ja="手作業が多く、どこから整理すればいいかわからない" data-en="Too much manual work, unsure where to start">手作業が多く、どこから整理すればいいかわからない</li>
+            <li data-ja="AI を使いたいが、現場への落とし込み方がわからない" data-en="Want to use AI, but not sure how it fits">AI を使いたいが、現場への落とし込み方がわからない</li>
+            <li data-ja="LP やサイトを作りたいが、何から決めればいいかわからない" data-en="Need a site or LP but not sure where to start">LP やサイトを作りたいが、何から決めればいいかわからない</li>
+            <li data-ja="担当者が変わると業務が止まってしまう" data-en="Operations fall apart when someone leaves">担当者が変わると業務が止まってしまう</li>
+          </ul>
+          <a href="contact.html" class="contact-cta-btn">
+            <span data-ja="相談する" data-en="Get in touch">相談する</span>
+            <span aria-hidden="true"> →</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-name">Taichi Okada</span>
+          <span class="footer-sub mono"
+                data-ja="AI活用 / 業務設計 / Web制作"
+                data-en="AI / Workflow Design / Web">AI活用 / 業務設計 / Web制作</span>
+        </div>
+        <div class="footer-right">
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="works.html" data-ja="実績"   data-en="Works">実績</a>
+            <a href="about.html" data-ja="About"  data-en="About">About</a>
+            <a href="contact.html" data-ja="相談する" data-en="Contact">相談する</a>
+          </nav>
+          <span class="footer-copy mono">© 2025 Taichi Okada</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
