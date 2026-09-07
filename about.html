@@ -3,14 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Taichi Okada について。業務設計・AI活用を軸に、現場で使える仕組みを整える仕事をしています。">
+  <meta name="description" content="岡田泰地の経験と仕事の考え方。顧客対応・業務運用を起点に、業務改善、自動化、AIを業務に適用する取り組みを紹介します。">
+  <meta name="theme-color" content="#080A0A">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://taichiokada.net/about.html">
   <title>About | Taichi Okada</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Noto+Sans+JP:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-about" data-page="about">
+  <a class="skip-link" href="#main-content" data-ja="本文へ移動" data-en="Skip to content">本文へ移動</a>
+  <div class="ambient-light" aria-hidden="true"></div>
 
   <!-- ======================================================
        HEADER
@@ -19,34 +26,37 @@
     <div class="header-inner">
       <a class="brand" href="index.html" aria-label="Taichi Okada — トップ">
         <span class="brand-name">Taichi Okada</span>
-        <span class="brand-sub mono">AI / DX / Workflow Design</span>
+        <span class="brand-sub mono">Profile / Selected Work</span>
       </a>
       <nav class="nav-primary" aria-label="Primary">
         <a href="index.html" data-ja="Home" data-en="Home">Home</a>
         <a href="works.html" data-ja="実績" data-en="Works">実績</a>
         <a href="about.html" data-ja="About" data-en="About" aria-current="page">About</a>
-        <a href="contact.html" class="nav-cta" data-ja="相談する" data-en="Contact">相談する</a>
-      </nav>
+        <a href="contact.html" class="nav-cta" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
+      <a href="https://oneddy.net/" class="oneddy-nav" data-ja="Oneddy ↗" data-en="Oneddy ↗">Oneddy ↗</a>
+</nav>
       <div class="header-aside">
         <button class="lang-toggle" id="langToggle" aria-label="言語切替">
           <span class="lang-opt" data-lang="ja">JA</span>
           <span class="lang-sep" aria-hidden="true">/</span>
           <span class="lang-opt" data-lang="en">EN</span>
         </button>
-        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="メニュー">
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav"
+                aria-label="メニューを開く" data-aria-ja="メニューを開く" data-aria-en="Open menu">
           <span></span><span></span>
         </button>
       </div>
     </div>
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション" aria-hidden="true" inert>
       <a href="index.html" class="m-link" data-ja="Home" data-en="Home">Home</a>
       <a href="works.html" class="m-link" data-ja="実績" data-en="Works">実績</a>
       <a href="about.html" class="m-link" data-ja="About" data-en="About">About</a>
-      <a href="contact.html" class="m-link m-cta" data-ja="相談する" data-en="Contact">相談する</a>
-    </div>
+      <a href="contact.html" class="m-link m-cta" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
+    <a href="https://oneddy.net/" class="oneddy-nav" data-ja="Oneddy ↗" data-en="Oneddy ↗">Oneddy ↗</a>
+</nav>
   </header>
 
-  <main>
+  <main id="main-content">
 
     <!-- ======================================================
          PAGE HERO
@@ -75,29 +85,29 @@
           <!-- Portrait -->
           <div class="about-visual">
             <img
-              src="assets/taichiokada.jpg"
+              src="assets/taichiokada-400.webp"
+              srcset="assets/taichiokada-400.webp 400w, assets/taichiokada-800.webp 800w"
+              sizes="(max-width: 820px) min(86vw, 520px), min(38vw, 480px)"
               alt="Taichi Okada"
               class="portrait"
               loading="eager"
+              decoding="async"
+              fetchpriority="high"
               width="400"
               height="500"
             >
             <div class="portrait-caption">
               <span class="cap-name">Taichi Okada</span>
-              <span class="cap-role mono" data-ja="業務設計・AI活用" data-en="Workflow Design & AI">業務設計・AI活用</span>
+              <span class="cap-role mono" data-ja="業務設計・AI活用" data-en="Workflow Design &amp; AI">業務設計・AI活用</span>
             </div>
           </div>
 
           <!-- Narrative -->
           <div class="about-text reveal-item">
-            <p data-ja="カスタマーサクセス・オペレーション領域からキャリアをはじめ、現場の業務課題に向き合いながら、業務改善・自動化・ツール設計へと専門を広げてきました。"
-               data-en="I started in customer success and operations, and gradually moved toward systems design, automation, and internal tooling—always working close to real field problems.">
-              カスタマーサクセス・オペレーション領域からキャリアをはじめ、現場の業務課題に向き合いながら、業務改善・自動化・ツール設計へと専門を広げてきました。
-            </p>
-            <p data-ja="得意としているのは、非技術職のメンバーとも一緒に要件を整理し、「大きすぎず、実際に使われる」形で仕組みを作ることです。ツールを作って終わりではなく、実際に運用が回る状態まで関わることを重視しています。"
-               data-en="My strength is working alongside non-technical stakeholders to clarify what's really needed, then building systems that are small enough to actually get used—and staying involved until they do.">
-              得意としているのは、非技術職のメンバーとも一緒に要件を整理し、「大きすぎず、実際に使われる」形で仕組みを作ることです。ツールを作って終わりではなく、実際に運用が回る状態まで関わることを重視しています。
-            </p>
+            <p data-ja="カスタマーサクセスとオペレーションを起点に、業務改善・自動化・ツール設計に取り組んできました。業務システムの運用や社内IT支援にも関わり、日々の業務を支える仕組みへの理解を深めています。"
+               data-en="My background in customer success and operations led me to workflow improvement, automation and internal tools. I have also begun working with business systems operations and internal IT support, building my understanding of what keeps everyday work running.">カスタマーサクセスとオペレーションを起点に、業務改善・自動化・ツール設計に取り組んできました。業務システムの運用や社内IT支援にも関わり、日々の業務を支える仕組みへの理解を深めています。</p>
+            <p data-ja="非技術職のメンバーと対話し、曖昧な要望を具体的な手順や要件に整理することを大切にしています。作るものの範囲を絞り、使い方や引継ぎまで考えます。"
+               data-en="I value working with nontechnical colleagues to turn unclear requests into concrete steps and requirements. I keep the scope focused and consider how the result will be used and handed over.">非技術職のメンバーと対話し、曖昧な要望を具体的な手順や要件に整理することを大切にしています。作るものの範囲を絞り、使い方や引継ぎまで考えます。</p>
 
             <div class="about-meta">
               <div class="meta-item">
@@ -106,7 +116,7 @@
               </div>
               <div class="meta-item">
                 <span class="meta-key mono" data-ja="言語" data-en="Languages">言語</span>
-                <span class="meta-val" data-ja="日本語・英語対応可" data-en="Japanese & English">日本語・英語対応可</span>
+                <span class="meta-val" data-ja="日本語・英語対応可" data-en="Japanese &amp; English">日本語・英語対応可</span>
               </div>
               <div class="meta-item">
                 <span class="meta-key mono" data-ja="形態" data-en="Availability">形態</span>
@@ -127,8 +137,8 @@
       <div class="container">
 
         <div class="section-head">
-          <span class="eyebrow mono" data-ja="経歴の流れ" data-en="Career">経歴の流れ</span>
-          <h2 data-ja="これまでの流れ" data-en="Background">これまでの流れ</h2>
+          <span class="eyebrow mono" data-ja="これまでの経験" data-en="Experience">これまでの経験</span>
+          <h2 data-ja="経験の軸" data-en="My background">経験の軸</h2>
         </div>
 
         <div class="career-timeline">
@@ -136,33 +146,26 @@
           <div class="career-step reveal-item">
             <span class="career-num mono" aria-hidden="true">01</span>
             <div class="career-body">
-              <h3 data-ja="現場運用・顧客接点" data-en="Field Operations & Customer Engagement">現場運用・顧客接点</h3>
-              <p data-ja="カスタマーサクセスやオペレーション領域でキャリアをスタート。複数の企業・サービスにわたって、現場の業務がどう回っているか、どこで詰まるかを近くで見てきた。「使われるかどうか」を決める現場感覚はここで養われた。"
-                 data-en="Started in customer success and operations across multiple companies and services. Observed closely where workflows actually ran—and where they broke down. This is where I developed the field intuition that shapes everything I do now.">
-                カスタマーサクセスやオペレーション領域でキャリアをスタート。複数の企業・サービスにわたって、現場の業務がどう回っているか、どこで詰まるかを近くで見てきた。「使われるかどうか」を決める現場感覚はここで養われた。
-              </p>
+              <h3 data-ja="現場運用・顧客接点" data-en="Field Operations &amp; Customer Engagement">現場運用・顧客接点</h3>
+              <p data-ja="カスタマーサクセスやオペレーションの仕事を通じて、問い合わせ対応や日々の業務手順に向き合ってきました。使う人がどこで困るのか、何を確認する必要があるのかを考える起点になっています。"
+                 data-en="Customer success and operations work brought me close to support inquiries and everyday procedures. That experience shapes how I think about where people struggle and what they need to check.">カスタマーサクセスやオペレーションの仕事を通じて、問い合わせ対応や日々の業務手順に向き合ってきました。使う人がどこで困るのか、何を確認する必要があるのかを考える起点になっています。</p>
             </div>
           </div>
 
           <div class="career-step reveal-item">
             <span class="career-num mono" aria-hidden="true">02</span>
             <div class="career-body">
-              <h3 data-ja="業務改善・仕組み化" data-en="Process Improvement & Systems Design">業務改善・仕組み化</h3>
-              <p data-ja="現場で見てきた課題に対して、「整理して仕組みにする」ことへと関わりが変化。業務フローの可視化、属人化の解消、Spreadsheet / GAS / Slack を使った軽量な自動化など、使われる設計を意識した改善に取り組んできた。"
-                 data-en="The role shifted from observing problems to structuring solutions. Workflow visualization, reducing single-person dependencies, lightweight automation with Spreadsheet, GAS, and Slack—always with an eye toward what would actually get used.">
-                現場で見てきた課題に対して、「整理して仕組みにする」ことへと関わりが変化。業務フローの可視化、属人化の解消、Spreadsheet / GAS / Slack を使った軽量な自動化など、使われる設計を意識した改善に取り組んできた。
-              </p>
+              <h3 data-ja="業務改善・仕組み化" data-en="Process Improvement &amp; Systems Design">業務改善・仕組み化</h3>
+              <p data-ja="手順や情報の流れを整理し、スプレッドシート・GAS・API連携を使う業務ツールの設計・実装に取り組んできました。既存の運用を踏まえ、確認作業や更新方法まで考えることを大切にしています。"
+                 data-en="I have designed and built internal tools using spreadsheets, Apps Script and API integrations. I work from the existing process and consider how people will check and update the result.">手順や情報の流れを整理し、スプレッドシート・GAS・API連携を使う業務ツールの設計・実装に取り組んできました。既存の運用を踏まえ、確認作業や更新方法まで考えることを大切にしています。</p>
             </div>
           </div>
 
           <div class="career-step reveal-item">
             <span class="career-num mono" aria-hidden="true">03</span>
             <div class="career-body">
-              <h3 data-ja="AI活用・Web制作・自動化への展開" data-en="AI Adoption, Web Production & Automation">AI活用・Web制作・自動化への展開</h3>
-              <p data-ja="業務設計の文脈で AI を使う場面が増え、どこに組み込むかの整理や現場への定着支援を担うようになった。同時に、LP・Webサイト制作やカリキュラム設計の依頼も増え、現在は業務設計・AI活用・Web制作・自動化を横断する形で動いている。"
-                 data-en="AI started appearing naturally in workflow design—and I moved into clarifying where it fits and how to make it stick. Web and LP production, curriculum design, and automation expanded in parallel. Now I work across all of these, depending on what the engagement needs.">
-                業務設計の文脈で AI を使う場面が増え、どこに組み込むかの整理や現場への定着支援を担うようになった。同時に、LP・Webサイト制作やカリキュラム設計の依頼も増え、現在は業務設計・AI活用・Web制作・自動化を横断する形で動いている。
-              </p>
+              <h3 data-ja="AIを業務に適用する" data-en="Applying AI to real work">AIを業務に適用する</h3>
+              <p  data-ja="AIの教材制作や業務改善デモの検証を通じて、入力情報の整理、出力の確かめ方、人による確認を残す設計に取り組んでいます。Oneddyでは、業務改善・自動化・AI活用の相談を、小規模な実装と引継ぎにつなげています。" data-en="Through AI learning materials and workflow demo testing, I work on preparing inputs, checking outputs and keeping human review in the process. At Oneddy, I connect workflow improvement, automation and AI use with small implementations and handover.">AIの教材制作や業務改善デモの検証を通じて、入力情報の整理、出力の確かめ方、人による確認を残す設計に取り組んでいます。Oneddyでは、業務改善・自動化・AI活用の相談を、小規模な実装と引継ぎにつなげています。</p>
             </div>
           </div>
 
@@ -199,20 +202,18 @@
             <span class="strength-num mono" aria-hidden="true">02</span>
             <div class="strength-body">
               <h3 data-ja="使われる形を作る" data-en="Building what actually gets used">使われる形を作る</h3>
-              <p data-ja="大きすぎず、担当者が一人でメンテナンスできる規模感を大切にしています。今ある環境（Spreadsheet / GAS / Slack）を最大限活かした設計を優先します。"
-                 data-en="I keep scope small enough for one person to maintain. Building on existing infrastructure—Spreadsheet, GAS, Slack—before introducing anything new.">
-                大きすぎず、担当者が一人でメンテナンスできる規模感を大切にしています。今ある環境（Spreadsheet / GAS / Slack）を最大限活かした設計を優先します。
-              </p>
+              <p data-ja="既存のツールや運用を活かせる設計を大切にしています。AIを使う場合も、任せる処理と人が確認する内容を分け、実際の入力を想定して出力を確かめます。"
+                 data-en="I aim to work with existing tools and processes. When using AI, I separate automated steps from human review and check outputs against realistic inputs.">既存のツールや運用を活かせる設計を大切にしています。AIを使う場合も、任せる処理と人が確認する内容を分け、実際の入力を想定して出力を確かめます。</p>
             </div>
           </div>
 
           <div class="strength-item reveal-item">
             <span class="strength-num mono" aria-hidden="true">03</span>
             <div class="strength-body">
-              <h3 data-ja="運用まで関わる" data-en="Staying through adoption">運用まで関わる</h3>
-              <p data-ja="納品で終わりではなく、実際に現場で使われるようになるまで支援します。引き継ぎドキュメント・運用ルール・定着確認まで含めて完了とします。"
-                 data-en="Delivery isn't the finish line. I stay involved until it's running in the field—handoff documentation, operating rules, and adoption confirmation included.">
-                納品で終わりではなく、実際に現場で使われるようになるまで支援します。引き継ぎドキュメント・運用ルール・定着確認まで含めて完了とします。
+              <h3 data-ja="運用まで関わる" data-en="Support operations">運用まで関わる</h3>
+              <p data-ja="操作・更新・引継ぎまで考え、合意した範囲で運用を支援します。担当者が使い続けられるよう、手順や確認事項を残します。"
+                 data-en="I plan for operation, updates and handover, and support ongoing use within the agreed scope. I document procedures and checks so the next owner can keep using the system.">
+                操作・更新・引継ぎまで考え、合意した範囲で運用を支援します。担当者が使い続けられるよう、手順や確認事項を残します。
               </p>
             </div>
           </div>
@@ -221,10 +222,8 @@
             <span class="strength-num mono" aria-hidden="true">04</span>
             <div class="strength-body">
               <h3 data-ja="非技術職と動く" data-en="Working with non-technical stakeholders">非技術職と動く</h3>
-              <p data-ja="エンジニアではないメンバーとの要件整理を多く経験しています。曖昧な状態から要件を引き出し、共通認識を作ってから実装に入るプロセスを重視しています。"
-                 data-en="Extensive experience clarifying requirements with non-technical stakeholders. I prioritize building shared understanding before any implementation starts.">
-                エンジニアではないメンバーとの要件整理を多く経験しています。曖昧な状態から要件を引き出し、共通認識を作ってから実装に入るプロセスを重視しています。
-              </p>
+              <p data-ja="非技術職のメンバーとも、要望を具体的な手順や条件に整理します。使う言葉を揃え、何を変えるかの共通認識を作ってから実装に入ることを重視しています。"
+                 data-en="I work with nontechnical colleagues to turn requests into concrete steps and conditions, agreeing on what should change before starting implementation.">非技術職のメンバーとも、要望を具体的な手順や条件に整理します。使う言葉を揃え、何を変えるかの共通認識を作ってから実装に入ることを重視しています。</p>
             </div>
           </div>
 
@@ -262,13 +261,11 @@
     <section class="section page-footer-cta">
       <div class="container">
         <div class="pfc-text reveal-item">
-          <h2 data-ja="まずは、話してみる。" data-en="Let's talk.">まずは、話してみる。</h2>
-          <p data-ja="相談の準備が整っていなくても大丈夫です。今の状況を聞かせてください。"
-             data-en="No need to have everything figured out. Just tell me what's going on.">
-            相談の準備が整っていなくても大丈夫です。今の状況を聞かせてください。
-          </p>
-          <a href="contact.html" class="contact-cta-btn">
-            <span data-ja="相談する" data-en="Get in touch">相談する</span>
+          <h2 data-ja="業務改善の相談は、Oneddyへ。" data-en="Discuss workflow improvement with Oneddy.">業務改善の相談は、Oneddyへ。</h2>
+          <p data-ja="業務改善・自動化・AI活用の実装例や進め方、相談窓口は、Oneddyにまとめています。"
+             data-en="Visit Oneddy for workflow improvement, automation and AI examples, the delivery process and inquiries.">業務改善・自動化・AI活用の実装例や進め方、相談窓口は、Oneddyにまとめています。</p>
+          <a href="https://oneddy.net/" class="contact-cta-btn">
+            <span data-ja="Oneddyを見る" data-en="Visit Oneddy">Oneddyを見る</span>
             <span aria-hidden="true"> →</span>
           </a>
         </div>
@@ -286,17 +283,16 @@
       <div class="footer-inner">
         <div class="footer-left">
           <span class="footer-name">Taichi Okada</span>
-          <span class="footer-sub mono"
-                data-ja="AI活用 / 業務設計 / Web制作"
-                data-en="AI / Workflow Design / Web">AI活用 / 業務設計 / Web制作</span>
+          <span class="footer-sub mono" data-ja="岡田泰地 / 経歴・経験・仕事の考え方" data-en="Taichi Okada / Profile, work and approach">岡田泰地 / 経歴・経験・仕事の考え方</span>
         </div>
         <div class="footer-right">
           <nav class="footer-nav" aria-label="Footer">
             <a href="works.html" data-ja="実績" data-en="Works">実績</a>
             <a href="about.html" data-ja="About" data-en="About">About</a>
-            <a href="contact.html" data-ja="相談する" data-en="Contact">相談する</a>
-          </nav>
-          <span class="footer-copy mono">© 2025 Taichi Okada</span>
+            <a href="contact.html" data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
+          <a href="https://oneddy.net/" class="oneddy-nav" data-ja="Oneddy ↗" data-en="Oneddy ↗">Oneddy ↗</a>
+</nav>
+          <span class="footer-copy mono">© 2026 Taichi Okada</span>
         </div>
       </div>
     </div>

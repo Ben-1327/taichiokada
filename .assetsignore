@@ -1,0 +1,7 @@
+# Publish the site files; keep repository metadata and server source private.
+*
+!/*.html
+!/styles.css
+!/script.js
+!/assets/
+!/assets/**
