@@ -3064,3 +3064,99 @@ html[lang="ja"] .work-detail-title { text-wrap: pretty; line-height: 1.5; }
 .page-contact .field-err { color: #f0a097; }
 .page-contact .contact-head .consultation-scope { font-size: .875rem; color: #b9b8b0; margin-top: 16px; }
 .page-contact .contact-head > p { max-width: 760px; }
+
+/* Service-aware shared intake. Ordinary personal pages keep the existing palette. */
+.page-contact [hidden] { display: none !important; }
+.contact-back { display: block; width: fit-content; min-height: 44px; padding-block: 12px; margin-top: 12px; color: var(--brass); font-size: .875rem; text-decoration: underline; text-underline-offset: 5px; }
+.page-contact .contact-head h1 { font-size: clamp(1.875rem, 3.5vw, 3rem); line-height: 1.5; max-width: 880px; }
+.page-contact .contact-page { padding-top: 48px; }
+.page-contact .contact-head { margin-bottom: 36px; }
+.page-contact .contact-layout { grid-template-columns: minmax(210px, 3fr) minmax(0, 7fr); gap: 48px; }
+.page-contact .field, .page-contact .select-wrap { min-width: 0; }
+.page-contact .field select { width: 100%; }
+.page-contact .field label { font-size: .875rem; flex-wrap: wrap; }
+.page-contact .field input, .page-contact .field textarea { font-size: 1rem; }
+.page-contact .field select { font-size: .875rem; }
+.page-contact .message-help, .page-contact .inquiry-notice { color: var(--muted); font-size: .875rem; line-height: 1.8; }
+.page-contact .advisory-price { padding: 16px; border-left: 3px solid var(--brass); background: var(--surface-2); color: var(--paper-soft); font-size: .875rem; line-height: 1.85; }
+.page-contact .form-status { font-size: .9375rem; line-height: 1.8; }
+html.oneddy-contact-theme { color-scheme: light; background: #fff; }
+.oneddy-contact {
+  color-scheme: light;
+  --ink: #fff;
+  --ink-deep: #f4f7f5;
+  --surface: #fff;
+  --surface-2: #edf5f3;
+  --surface-3: #e3eeeb;
+  --paper: #3c383c;
+  --paper-soft: #484c49;
+  --muted: #59615e;
+  --muted-deep: #59615e;
+  --brass: #006f84;
+  --brass-soft: #005b6c;
+  --line: #cbd8d4;
+  --line-strong: #a7bfba;
+  --danger: #a02b23;
+  background: #fff;
+}
+.oneddy-contact::before, .oneddy-contact .ambient-light { display: none; }
+.oneddy-contact .site-header, .oneddy-contact .site-header.is-scrolled { background: rgba(255,255,255,.97); border-bottom-color: var(--line); }
+.oneddy-contact .contact-page { background: #f5f8f6; }
+.oneddy-contact .mobile-nav { background: #fff; }
+.oneddy-contact .contact-head h1, html[lang="en"] .oneddy-contact .contact-head h1 { font-family: var(--font-body); }
+.oneddy-contact .contact-form { border-color: var(--line); }
+.oneddy-contact .form-note, .oneddy-contact .form-privacy, .oneddy-contact .label-opt, .oneddy-contact .hints-label, .oneddy-contact .contact-head .consultation-scope { color: #59615e; }
+.oneddy-contact .field-err { color: var(--danger); }
+.oneddy-contact .submit-btn { background: var(--brass); border-color: var(--brass); color: #fff; }
+.oneddy-contact .submit-btn:hover { background: #005b6c; color: #fff; }
+.oneddy-contact .submit-btn::before { background: #005b6c; }
+.oneddy-contact .field input::placeholder, .oneddy-contact .field textarea::placeholder { color: #65726e; opacity: 1; }
+.oneddy-contact .field input:focus, .oneddy-contact .field textarea:focus, .oneddy-contact .field select:focus { box-shadow: 0 0 0 3px rgba(0,111,132,.12); }
+.oneddy-contact .btn-spinner { border-color: #ffffff60; border-top-color: #fff; }
+.oneddy-contact .scroll-progress__bar { box-shadow: none; }
+@media (max-width: 960px) {
+  .page-contact .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+  .page-contact .contact-hints { position: static; }
+}
+@media (max-width: 600px) {
+  .page-contact .contact-page { padding-top: 28px; }
+  .page-contact .contact-head h1 { font-size: 1.875rem; line-height: 1.45; margin-top: 16px; }
+  .page-contact .contact-form { padding: 16px; }
+  .page-contact .field select { padding-left: 10px; padding-right: 28px; }
+  .page-contact .sel-arrow { right: 10px; }
+  .page-contact .advisory-price { padding: 14px; }
+  .footer-nav .oneddy-nav { max-width: 100%; white-space: normal; justify-content: flex-start; }
+}
+
+/* Match the editorial service pages while preserving the personal portfolio. */
+.oneddy-contact { --font-body: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif; --font-display: "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif; }
+.oneddy-contact .contact-page { background: #fcfbf8; }
+.oneddy-contact .contact-head h1, html[lang="en"] .oneddy-contact .contact-head h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+.oneddy-contact .contact-head { max-width: 820px; }
+.oneddy-contact .contact-head > p { font-size: 14px; max-width: 650px; }
+.oneddy-contact .contact-head .consultation-scope { font-size: 12px; }
+.oneddy-contact .contact-form { box-shadow: none; background: white; border-radius: 6px; }
+.page-contact .selected-price { margin-top: 14px; font-size: 16px; line-height: 1.8; color: var(--brass); }
+.page-contact .fee-details { margin-top: 8px; font-size: 12px; color: var(--muted); }
+.page-contact .fee-details summary { cursor: pointer; min-height: 44px; padding-block: 10px; }
+.page-contact .fee-details .advisory-price { margin-top: 0; border: 0; padding: 12px 16px; font-size: 12px; }
+@media(max-width:600px) {
+ .oneddy-contact .contact-page { padding-top: 26px; }
+ .oneddy-contact .contact-head { margin-bottom: 24px; }
+ .oneddy-contact .contact-head h1 { font-size: 1.8rem; }
+ .oneddy-contact .contact-head > p { font-size: 13px; }
+ .oneddy-contact .contact-form { padding: 22px 18px; }
+}
+
+/* Oneddy intake: recognize the provider and read the conditions before sending. */
+.contact-service-identity { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; width: fit-content; margin-bottom: 20px; color: #52645f; text-decoration: none; }
+.contact-service-identity img { width: 126px; height: 36px; object-fit: contain; }
+.contact-service-identity span { font-size: 14px; }
+.contact-service-identity[hidden] { display: none; }
+.oneddy-contact .contact-head h1 { text-wrap: balance; }
+.oneddy-contact .contact-head > p { font-size: 15px; }
+.oneddy-contact .contact-head .consultation-scope,
+.page-contact .fee-details, .page-contact .fee-details .advisory-price { font-size: 14px; }
+@media(max-width:600px) {
+  .oneddy-contact .contact-head h1 { font-size: 1.8rem; max-width: 18em; }
+}

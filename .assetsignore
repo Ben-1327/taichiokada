@@ -5,3 +5,6 @@
 !/script.js
 !/assets/
 !/assets/**
+!/robots.txt
+!/sitemap.xml
+!/_headers

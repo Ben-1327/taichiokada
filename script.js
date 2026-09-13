@@ -15,26 +15,26 @@
     home: {
       ja: {
         title: "岡田泰地 | Profile & Selected Work",
-        description: "岡田泰地のプロフィール・経歴・実績。業務改善・自動化の実装パートナーOneddyの運営者として、現場理解と使い続けられる仕組みを大切にしています。",
+        description: "岡田泰地のプロフィール・経歴・実績。AI教材と業務ツールの設計・制作の経験をもとに、Oneddyで経営者のAI活用サポートと業務改善の実装支援に取り組んでいます。",
       },
       en: {
         title: "Taichi Okada | Profile & Selected Work",
-        description: "The profile, selected work and approach of Taichi Okada, who runs Oneddy, an implementation partner for workflow improvement and automation.",
+        description: "The profile and work of Taichi Okada. Drawing on AI learning content and workflow tools, Oneddy offers personal AI coaching for business owners and workflow implementation support.",
       },
     },
     works: {
       ja: {
         title: "実績 / Works | Taichi Okada",
-        description: "岡田泰地の実績紹介。Web制作、AI学習コンテンツ、管理・請求業務ツールについて、取り組んだ課題と担当範囲を紹介します。",
+        description: "岡田泰地の実績紹介。AI学習コンテンツ、管理・請求業務ツール、Web制作について、取り組んだ課題と担当範囲を紹介します。",
       },
       en: {
         title: "Selected Work | Taichi Okada",
-        description: "Selected work by Taichi Okada, with the context and scope of each project across websites, AI learning content and internal workflow tools.",
+        description: "Selected work by Taichi Okada: AI learning content, internal workflow tools and websites, with the context and scope of each project.",
       },
     },
     about: {
       ja: {
-        title: "About | Taichi Okada",
+        title: "岡田泰地について｜AI活用・業務改善の経験",
         description: "岡田泰地の経験と仕事の考え方。顧客対応・業務運用を起点に、業務改善、自動化、AIを業務に適用する取り組みを紹介します。",
       },
       en: {
@@ -53,6 +53,33 @@
       },
     },
   };
+
+  // Keep this small offer snapshot in sync with oneddy-sites/content/site.json.
+  // npm run build/check rejects a mismatch; change stage manually after actual initial delivery.
+  const ADVISORY_OFFER = {
+  "stage": "initial",
+  "experiencePrice": 22000,
+  "experienceMinutes": 90,
+  "experienceSegments": [
+    10,
+    15,
+    20,
+    35,
+    10
+  ],
+  "initialPrice": 99000,
+  "regularPrice": 132000,
+  "initialClients": 2,
+  "weeks": 4,
+  "sessions": [
+    90,
+    60,
+    45,
+    30
+  ],
+  "assignments": 3
+};
+  let syncContactContext = () => {};
 
   const FORM_MESSAGES = {
     ja: {
@@ -187,6 +214,7 @@
     }
 
     updateMenuLabel();
+    syncContactContext();
   }
 
   function initLanguageToggle() {
@@ -346,7 +374,7 @@
   }
 
   function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach((link) => {
       link.addEventListener("click", (event) => {
         const href = link.getAttribute("href");
         const target = href === "#" ? document.documentElement : document.querySelector(href);
@@ -479,7 +507,7 @@
 
   function errorElementFor(field) {
     const id = field.getAttribute("aria-describedby");
-    return id ? document.getElementById(id) : null;
+    return id ? id.split(/\s+/).map((value) => document.getElementById(value)).find((element) => element?.classList.contains("field-err")) : null;
   }
 
   function setFieldError(field, message) {
@@ -538,19 +566,125 @@
     const form = document.getElementById("contactForm");
     if (!form) return;
 
-    // The existing intake serves both sites; the source is a fixed label, never arbitrary URL data.
-    const fromOneddy = new URLSearchParams(window.location.search).get("from") === "oneddy";
-    if (fromOneddy) {
-      const option = form.querySelector('option[value="ai"]');
-      if (option) option.defaultSelected = true;
-    }
-    const syncSubject = () => {
-      form.elements.subject.value = form.elements.inquiry_type.value === "ai"
-        ? "[Oneddy] 業務改善・自動化・AI活用のご相談"
-        : "[岡田泰地] お問い合わせ";
+    // Only fixed query values select a service. Raw URL text never becomes copy or a subject.
+    const query = new URLSearchParams(window.location.search);
+    const serviceTypes = { advisory: "ai_advisory", implementation: "ai", undecided: "oneddy_consultation" };
+    const category = form.elements.inquiry_type;
+    const plan = form.elements.advisory_plan;
+    const initialType = (Object.hasOwn(serviceTypes, query.get("service")) ? serviceTypes[query.get("service")] : "") ||
+      (query.get("from") === "oneddy" || query.has("service") || query.get("inquiry_type") === "ai" ? "ai" : "");
+    const initialPlan = query.get("service") === "advisory" && ["experience", "program"].includes(query.get("plan"))
+      ? query.get("plan") : "undecided";
+    [...category.options].forEach((option) => { option.defaultSelected = option.value === initialType; });
+    [...plan.options].forEach((option) => { option.defaultSelected = option.value === initialPlan; });
+    category.value = initialType;
+    plan.value = initialPlan;
+
+    const contexts = {
+      experience: {
+        title: ["90分体験のご相談", "Discuss a 90-minute experience."],
+        subject: "[Oneddy] AI実務体験のご相談", path: "/ai-advisory/#experience",
+        back: ["AI実務体験の内容へ戻る →", "Back to AI Work Experience →"],
+      },
+      program: {
+        title: ["4週間プログラムのご相談", "Discuss the four-week program."],
+        subject: "[Oneddy] AI実務習得・定着プログラムのご相談", path: "/ai-advisory/#program",
+        back: ["4週間プログラムの進め方へ戻る →", "Back to the program →"],
+      },
+      ai_advisory: {
+        title: ["自分の仕事でのAI活用", "Discuss using AI in your own work."],
+        subject: "[Oneddy] 経営者のAI活用伴走のご相談", path: "/ai-advisory/#plans",
+        back: ["AI活用サポートの2つのプランへ戻る →", "Back to AI coaching plans →"],
+      },
+      ai: {
+        title: ["業務改善・自動化のご相談", "Discuss workflow improvement and automation."],
+        subject: "[Oneddy] 業務改善・自動化の実装支援のご相談", path: "/implementation/",
+        back: ["実装支援の内容へ戻る →", "Back to implementation support →"],
+      },
+      oneddy_consultation: {
+        title: ["無料相談のお申し込み", "Find the right support together."],
+        subject: "[Oneddy] ご相談・内容未定", path: "/#contact",
+        back: ["Oneddyの2つの支援へ戻る →", "Back to Oneddy’s two services →"],
+      },
     };
-    form.addEventListener("change", syncSubject);
-    syncSubject();
+    const regular = ADVISORY_OFFER.stage === "regular";
+    const amount = (value) => value.toLocaleString("ja-JP");
+    const programPrice = regular ? ADVISORY_OFFER.regularPrice : ADVISORY_OFFER.initialPrice;
+    const sessionTotal = ADVISORY_OFFER.sessions.reduce((sum, minutes) => sum + minutes, 0);
+    const feeText = (language) => {
+      const experience = amount(ADVISORY_OFFER.experiencePrice);
+      const program = amount(programPrice);
+      const total = amount(ADVISORY_OFFER.experiencePrice + programPrice);
+      if (language === "en") {
+        const current = regular ? `Program: JPY ${program} including tax (regular fee).`
+          : `Program: JPY ${program} including tax for the first ${ADVISORY_OFFER.initialClients} paid engagements. The regular fee of JPY ${amount(ADVISORY_OFFER.regularPrice)} applies after this initial phase.`;
+        const selected = plan.value === "experience" ? `AI Work Experience: JPY ${experience} including tax, one ${ADVISORY_OFFER.experienceMinutes}-minute session.`
+          : plan.value === "program" ? current + ` About ${ADVISORY_OFFER.weeks} weeks, ${ADVISORY_OFFER.sessions.length} sessions (${ADVISORY_OFFER.sessions.join(" / ")} minutes; ${sessionTotal} minutes total) and ${ADVISORY_OFFER.assignments} practice assignments.`
+          : `Choose together: a ${ADVISORY_OFFER.experienceMinutes}-minute experience (JPY ${experience} including tax) or the four-week program. ${current}`;
+        return `${selected} The experience is optional and charged separately, with no credit toward the program. You may start with the program directly; it still includes all four sessions after an experience. Both cost JPY ${total} including tax${regular ? "" : ` in the initial phase, or JPY ${amount(ADVISORY_OFFER.experiencePrice + ADVISORY_OFFER.regularPrice)} at the regular fee`}. AI tool fees are extra. We confirm the applicable fee and terms before you apply.`;
+      }
+      const current = regular ? `4週間プログラム：通常料金${program}円（税込）。`
+        : `4週間プログラム：初期提供価格${program}円（税込・最初の有料${ADVISORY_OFFER.initialClients}件）。通常料金${amount(ADVISORY_OFFER.regularPrice)}円（税込・初期提供後）。`;
+      const selected = plan.value === "experience" ? `AI実務体験：${experience}円（税込）・1回${ADVISORY_OFFER.experienceMinutes}分。`
+        : plan.value === "program" ? current + ` 約${ADVISORY_OFFER.weeks}週間、面談${ADVISORY_OFFER.sessions.length}回（${ADVISORY_OFFER.sessions.join("・")}分、計${sessionTotal}分）・実践課題${ADVISORY_OFFER.assignments}回。`
+        : `相談して決める：${ADVISORY_OFFER.experienceMinutes}分の体験${experience}円（税込）と、約${ADVISORY_OFFER.weeks}週間の4週間プログラムから選べます。${current}`;
+      return `${selected} 体験は任意・別料金で、プログラム料金からの差し引きはありません。4週間プログラムへ直接申込みでき、体験後も4週間プログラムは4回です。両方なら${regular ? "合計" : "初期合計"}${total}円${regular ? "" : `、通常合計${amount(ADVISORY_OFFER.experiencePrice + ADVISORY_OFFER.regularPrice)}円`}（税込）。AIツール利用料は別途です。適用料金と提供条件は申込前に確認します。`;
+    };
+    syncContactContext = () => {
+      const english = document.documentElement.lang === "en";
+      const languageIndex = english ? 1 : 0;
+      const advisory = category.value === "ai_advisory";
+      if (!advisory) plan.value = "undecided";
+      plan.disabled = !advisory;
+      document.getElementById("advisoryPlanField").hidden = !advisory;
+      const context = contexts[advisory && plan.value !== "undecided" ? plan.value : category.value];
+      document.body.classList.toggle("oneddy-contact", Boolean(context));
+      document.documentElement.classList.toggle("oneddy-contact-theme", Boolean(context));
+      document.getElementById("contactServiceIdentity").hidden = !context;
+      document.getElementById("contactBrand").textContent = context ? "Oneddy / 無料30分相談" : "Taichi Okada / Contact";
+      if (english && context) document.getElementById("contactBrand").textContent = "Oneddy / Free 30-minute consultation";
+      document.getElementById("contactTitle").textContent = context ? context.title[languageIndex] : (english ? "Get in touch." : "お問い合わせ。");
+      document.getElementById("contactIntro").textContent = context
+        ? (english ? "Tell me about your work. Taichi Okada will help you find a starting point in a free 30-minute online call."
+          : "いまの仕事と困っていることを教えてください。岡田泰地が無料30分のオンライン相談で、進め方を一緒に考えます。")
+        : (english ? "For partnerships, introductions or other inquiries, please briefly describe what you have in mind. I typically respond within 2–3 business days."
+          : "協業・紹介やその他のご連絡も、こちらで受け付けています。ご相談の内容を簡単にお知らせください。通常2〜3営業日以内にご連絡します。");
+      document.getElementById("contactScope").textContent = context
+        ? (english ? "Submit → reply within 2–3 business days → arrange a time. Submission does not confirm a booking or contract."
+          : "受付 → 通常2〜3営業日以内に返信 → 日程調整。送信だけで予約・契約は確定しません。")
+        : (english ? "Choose an Oneddy category below for AI coaching or workflow implementation."
+          : "AI活用サポート・業務改善の実装支援をご希望の場合は、下の相談カテゴリから選べます。");
+      const back = document.getElementById("serviceBack");
+      back.hidden = !context;
+      back.href = "https://oneddy.net" + (context?.path || "/");
+      back.textContent = context ? context.back[languageIndex] : "";
+      document.getElementById("advisoryPrice").textContent = advisory ? feeText(english ? "en" : "ja") : "";
+      const selectedFee = plan.value === "experience" ? ADVISORY_OFFER.experiencePrice : programPrice;
+      document.getElementById("selectedPrice").textContent = !advisory ? "" : plan.value === "undecided"
+        ? (english ? "Experience JPY " : "体験 ") + amount(ADVISORY_OFFER.experiencePrice) + (english ? " / Program JPY " : "円 ／ 4週間プログラム ") + amount(programPrice) + (english ? " · tax included" : "円（税込）")
+        : (english ? "JPY " : "") + amount(selectedFee) + (english ? " · tax included" : "円（税込）") + (plan.value === "program" && !regular ? (english ? " · initial fee, first two paid engagements" : "・初期提供価格／最初の有料2件") : "");
+      document.getElementById("messageLabel").textContent = context
+        ? (english ? "Your work and what you need help with" : "相談したい仕事・困っていること")
+        : (english ? "Message" : "内容");
+      document.getElementById("messageHelp").textContent = context
+        ? (english ? "Briefly describe a recent task and where you got stuck. You do not need to have chosen a tool. Do not include customer information or confidential materials."
+          : "最近行った仕事と、迷っている場面を簡単に教えてください。ツールが未定でも大丈夫です。顧客情報や機密資料は入力しないでください。")
+        : (english ? "Please do not include personal data or confidential materials." : "個人情報や機密資料は入力しないでください。");
+      form.elements.message.placeholder = context
+        ? (english ? "A recent task, tools you use and what you would like help with." : "最近行った仕事、使っている道具、困っている場面など。")
+        : (english ? "Briefly describe your inquiry." : "ご相談の内容を簡単にお書きください。");
+      form.elements.subject.value = context?.subject || "[岡田泰地] お問い合わせ";
+      document.title = context ? `${context.title[languageIndex]} | Oneddy` : PAGE_META.contact[english ? "en" : "ja"].title;
+    };
+    category.addEventListener("change", () => { plan.value = "undecided"; syncContactContext(); });
+    plan.addEventListener("change", syncContactContext);
+    form.addEventListener("reset", () => {
+      queueMicrotask(() => {
+        form.querySelectorAll("[required]").forEach(clearFieldError);
+        syncContactContext();
+      });
+    });
+    syncContactContext();
 
     form.querySelectorAll("[required]").forEach((field) => {
       field.setAttribute("aria-invalid", "false");
@@ -565,6 +699,8 @@
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (form.getAttribute("aria-busy") === "true") return;
+      syncContactContext();
       if (!validateForm(form)) {
         form.querySelector(".has-error")?.focus();
         return;
@@ -593,7 +729,7 @@
         }
 
         form.reset();
-        syncSubject();
+        syncContactContext();
         showFormStatus("ok");
       } catch (error) {
         console.error("Contact form error:", error);
